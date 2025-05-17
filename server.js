@@ -12,7 +12,11 @@ const app = express();
 // Middleware
 app.use(cors({
     origin: ['https://black-cat-32.github.io', 'http://localhost:3001'],
-    credentials: true
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
+    credentials: true,
+    preflightContinue: false,
+    optionsSuccessStatus: 204
 }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
