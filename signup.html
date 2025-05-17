@@ -181,6 +181,7 @@
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Accept': 'application/json'
                     },
                     body: JSON.stringify({ username, password })
                 });
@@ -202,10 +203,12 @@
                     const errorMessage = document.getElementById('usernameError');
                     errorMessage.textContent = data.message || 'An error occurred during signup';
                     errorMessage.style.display = 'block';
+                    console.error('Signup error:', data);
                 }
             } catch (error) {
+                console.error('Signup error:', error);
                 const errorMessage = document.getElementById('usernameError');
-                errorMessage.textContent = 'An error occurred. Please try again.';
+                errorMessage.textContent = 'Network error. Please check your connection and try again.';
                 errorMessage.style.display = 'block';
             } finally {
                 // Hide loading spinner
