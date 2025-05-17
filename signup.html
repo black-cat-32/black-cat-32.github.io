@@ -149,7 +149,7 @@
     </div>
 
     <script>
-        const API_URL = 'https://login-system-backend.onrender.com';
+        const API_URL = 'https://login-system-backend-black-cat-32.onrender.com';
 
         async function handleSignup(event) {
             event.preventDefault();
@@ -177,7 +177,7 @@
             const username = document.getElementById('username').value;
             
             try {
-                const response = await fetch('/api/signup', {
+                const response = await fetch(`${API_URL}/api/signup`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
