@@ -115,6 +115,8 @@
     </div>
 
     <script>
+        const API_URL = 'https://login-system-backend.onrender.com';
+
         // Check if user is logged in
         const token = localStorage.getItem('token');
         if (!token) {
@@ -124,7 +126,7 @@
         // Fetch user data
         async function fetchUserData() {
             try {
-                const response = await fetch('/api/dashboard', {
+                const response = await fetch(`${API_URL}/api/dashboard`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
