@@ -9,25 +9,10 @@ const path = require('path');
 
 const app = express();
 
-// Middleware
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://black-cat-32.github.io');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Accept');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    
-    if (req.method === 'OPTIONS') {
-        return res.status(204).end();
-    }
-    next();
-});
+// CORS configuration
+app.use(cors());
 
-app.use(cors({
-    origin: 'https://black-cat-32.github.io',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
-    credentials: true
-}));
+// Middleware
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
