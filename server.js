@@ -10,7 +10,12 @@ const path = require('path');
 const app = express();
 
 // CORS configuration
-app.use(cors());
+app.use(cors({
+    origin: ['https://black-cat-32.github.io', 'http://localhost:3000'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
+    credentials: true
+}));
 
 // Middleware
 app.use(express.json());
