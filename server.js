@@ -11,11 +11,16 @@ const app = express();
 
 // CORS configuration
 app.use(cors({
-    origin: ['https://black-cat-32.github.io', 'http://localhost:3000'],
+    origin: 'https://black-cat-32.github.io',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
-    credentials: true
+    credentials: true,
+    preflightContinue: false,
+    optionsSuccessStatus: 204
 }));
+
+// Handle preflight requests
+app.options('*', cors());
 
 // Middleware
 app.use(express.json());
